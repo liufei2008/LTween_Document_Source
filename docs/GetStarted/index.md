@@ -52,7 +52,8 @@ There is a special ease type called "CurveFloat":
 ![](./step9.png)
 
 This can let us use a CurveFloat to control our animation.  
-The following steps will show you how to do it:
+
+The following steps will show you how to do it:  
 Right click on empty area of Content, choose "Miscellaneous"->"Curve":  
 ![](./step10.png)
 
@@ -74,32 +75,34 @@ After the "Set Curve Float" node, Drag out "Return Value" and add a new node "Se
 ![](./step15.png)
 
 Click "New Loop Type" and you will find 4 options:  
-- **Once** No loop  
-- **Restart** Each loop cycle restarts from beginning  
-- **Yoyo** The tween move forward and backward at alternate cycles  
-- **Incremental** Continuously increments the tween at the end of each loop cycle (A to B, B to B+(A-B), and so on)  
+- **Once**: No loop  
+- **Restart**: Each loop cycle restarts from beginning  
+- **Yoyo**: The tween move forward and backward at alternate cycles  
+- **Incremental**: Continuously increments the tween at the end of each loop cycle (A to B, B to B+(A-B), and so on)  
 ![](./step16.png)
 
-Don't forget to set "New Loop Count", 0 or 1 means no loop, -1 means infinite loop.
+Don't forget to set "New Loop Count", 0 or 1 means no loop, -1 means infinite loop.  
 
 ## Events
 Event function is also a can't-missing feature in tween animation.
 LTween provide these events:  
-- **OnStart** Execute when animation start, if the tween have delay, then execute after delay  
-- **OnUpdate** Execute every frame if is tweening  
-- **OnComplete** Execute when animation complete, if the tween have loop, then execute after all loop. If is infinite loop then not execute
-- **OnCycleStart** Exeucte every cycle start  
-- **OnCycleComplete** Exeucte every cycle complete  
+- **OnStart**: Execute when animation start, if the tween have delay, then execute after delay  
+- **OnUpdate**: Execute every frame if is tweening  
+- **OnComplete**: Execute when animation complete, if the tween have loop, then execute after all loop. If is infinite loop then not execute at all
+- **OnCycleStart**: Exeucte every loop cycle start  
+- **OnCycleComplete**: Exeucte every loop cycle complete  
 Setup event function is easy. eg OnUpdate, drag out the "Return Value" and add new node "On Update", drag out "New Update" and add a custom event, the event will execute every frame after animation start:  
 ![](./step17.png)
 
 
 ## Functions
-- **Pause/Resume** Pause/Resume this animation  
-- **Restart** Restart animation  
-- **Goto** Send the tween to the given position in time  
-- **Kill/KillIfIsTweening** Kill the tween if the animation already start  
-- **ForceComplete** Force complete this animation at this frame, call OnComplete  
+- **Pause/Resume**: Pause/Resume this animation  
+- **Restart**: Restart animation  
+- **Goto**: Send the tween to the given position in time  
+- **Kill/KillIfIsTweening**: Kill the tween if the animation already start  
+- **ForceComplete**: Force complete this animation at this frame, call OnComplete  
+- **IsTweening**: Is the tween animation processing?
+- **GetLoopCycleCount**: Get the tween animation loop cycle count
 
 ## Use LTween for Material
 
