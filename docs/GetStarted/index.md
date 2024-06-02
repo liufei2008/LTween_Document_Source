@@ -83,6 +83,16 @@ Click "New Loop Type" and you will find 4 options:
 
 Don't forget to set "New Loop Count", 0 or 1 means no loop, -1 means infinite loop.  
 
+## GamePause and TimeDilation
+Normally when set GamePause, tween animation will also pause; and when set TimeDilation, tween animation will affected by dilated-time too. But sometimes we don't want that, we want our tween animation still process when set GamePause, or still use real-time when set TimeDilation. So the two properties is good for this condition:  
+- **SetAffectByGamePause**: Will this tween be affected when set GamePause? Default is true, means when GamePause this tween will pause too, false means this tween will still process if GamePause.  
+- **SetAffectByTimeDilation**: Will this tween be affected by TimeDilation? Default is true, means the tween will use dilated-time, false means the tween will use real-time.  
+
+### CAUTION!!!
+For LGUI's ScreenSpaceUI element, if create tween with it's own function (eg. UIItem.WidthTo), then it will automatically call SetAffectByGamePause(false) and SetAffectByTimeDilation(false), so UI will not affect by these two things. This can be change by changing LGUISettings:
+![](./LGUISettingsForGamePauseAndTimeDilation.png)  
+Same thing for UMG.  
+
 ## Events
 Event function is also a can't-missing feature in tween animation.
 LTween provide these events:  
@@ -103,6 +113,7 @@ Setup event function is easy. eg OnUpdate, drag out the "Return Value" and add n
 - **ForceComplete**: Force complete this animation at this frame, call OnComplete  
 - **IsTweening**: Is the tween animation processing?
 - **GetLoopCycleCount**: Get the tween animation loop cycle count
+- **GetProgress**: Get the tween progress in range 0 1
 
 ## Use LTween for Material
 

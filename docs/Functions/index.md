@@ -18,9 +18,13 @@ ULTweenBPLibrary::DelayCall(World, 2.0f, [](){
 
 ![](./step3.png)
 
-**RegisterUpdateEvent | UnregisterUpdateEvent**- Register the "Update" event so it will be executed every frame, until unregistered.
+
+*(DEPRECATED) **RegisterUpdateEvent | UnregisterUpdateEvent**- Register the "Update" event so it will be executed every frame, until unregistered.*  
 
 ![](./step4.png)
+
+**UpdateCall**- Call event every frame.  
+![](./UpdateCall.png)
 
 **RepeatCall**- Repeatly call function with given interval time:
 
