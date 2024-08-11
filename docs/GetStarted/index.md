@@ -89,9 +89,18 @@ Normally when set GamePause, tween animation will also pause; and when set TimeD
 - **SetAffectByTimeDilation**: Will this tween be affected by TimeDilation? Default is true, means the tween will use dilated-time, false means the tween will use real-time.  
 
 ### CAUTION!!!
-For LGUI's ScreenSpaceUI element, if create tween with it's own function (eg. UIItem.WidthTo), then it will automatically call SetAffectByGamePause(false) and SetAffectByTimeDilation(false), so UI will not affect by these two things. This can be change by changing LGUISettings:
+For LGUI's ScreenSpaceUI element, if create tween with it's own function (eg. UIItem.WidthTo), then it will automatically call SetAffectByGamePause(false) and SetAffectByTimeDilation(false), so UI will not affect by these two things (just like UMG). This can be change by changing LGUISettings:
 ![](./LGUISettingsForGamePauseAndTimeDilation.png)  
 Same thing for UMG.  
+
+## TickType
+When create a new tweener, the animation will execute within TickingGroup::DuringPhysics, this is also the default TickingGroup of Actor and ActorComponent.  
+We can also change tween animation's ticking group by calling **SetTickType**:
+![](./SetTickType.png)
+The parameters **PrePhysics DuringPhysics PostPhysics PostUpdateWork** is just like UE's default TickingGroup.  
+
+The last one **Manual** is special, it allow us to use our own tick. We can call **ManualTick** function to do the tick:
+![](./ManualTick.png)
 
 ## Events
 Event function is also a can't-missing feature in tween animation.

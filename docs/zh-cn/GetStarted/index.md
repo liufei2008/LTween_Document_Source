@@ -82,6 +82,25 @@ LTween用曲线的水平方向的0-1范围作为时间，记住这一点然后�
 
 别忘了要设置“New Loop Count”，0或1代表没有循环，-1代表无限循环。
 
+## 游戏暂停 和 时间缩放
+一般情况下当游戏暂停的时候，补间动画也会暂停；当设置时间缩放之后，补间动画也会收到影响。但有时我们不想让补间动画受到影响，我们想让动画继续正常播放，无论是设置游戏暂停或时间缩放。那么以下两个属性就比较适合这种情况：  
+- **SetAffectByGamePause**: 这个补间动画是否会受到游戏暂停影响？默认为是。  
+- **SetAffectByTimeDilation**: 这个补间动画是否会受到时间缩放影响？默认为是。  
+
+### 注意!!!
+对于LGUI的屏幕空间UI，如果补间动画用的是UI自带的函数（比如UIItem.WidthTo），那么这个补间动画会自动调用 SetAffectByGamePause(false) 和 SetAffectByTimeDilation(false) ，这样之后UI就不会受到这两者影响（就像UMG）。我们也可以修改这个设置：  
+![](./../../GetStarted/LGUISettingsForGamePauseAndTimeDilation.png)  
+S对于UMG的补间动画也一样.  
+
+## 更新类型
+当创建个新的补间动画，动画将会在TickingGroup::DuringPhysics的阶段执行，这也是Actor和ActorComponent的默认TickingGroup。  
+我们也可以修改补间动画的TickingGroup，通过调用函数**SetTickType**：  
+![](./../../GetStarted/SetTickType.png)
+这个函数的参数 **PrePhysics DuringPhysics PostPhysics PostUpdateWork** 就和UE自带的TickingGroup一样。  
+
+最后一个参数 **Manual** 比较特别，它可以让我们使用自定义的tick。我们可以这样调用 **ManualTick** 函数：
+![](./../../GetStarted/ManualTick.png)
+
 ## 事件
 事件也是补间动画系统中一个非常重要的功能。
 LTween提供这些事件：
